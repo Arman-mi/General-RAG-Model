@@ -1,0 +1,10 @@
+requests
+beautifulsoup4
+lxml
+trafilatura
+tqdm
+python-dotenv
+chromadb
+openai
+tiktoken
+lxml[html_clean]

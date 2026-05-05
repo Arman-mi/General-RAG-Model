@@ -1,0 +1,247 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0a0f1c;
+  --panel: rgba(17, 24, 39, 0.82);
+  --panel-border: rgba(148, 163, 184, 0.14);
+  --text: #e5edf7;
+  --muted: #9aa8bd;
+  --user: #2563eb;
+  --assistant: #182234;
+  --assistant-border: #2a3952;
+  --input: #0f172a;
+  --input-border: #334155;
+  --link: #8dc1ff;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top, rgba(37, 99, 235, 0.16), transparent 35%),
+    linear-gradient(180deg, #0a0f1c 0%, #0d1322 100%);
+}
+
+.app {
+  max-width: 980px;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  padding: 20px 24px;
+  margin-bottom: 18px;
+  border: 1px solid var(--panel-border);
+  border-radius: 24px;
+  background: var(--panel);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+}
+
+.topbar h1 {
+  margin: 0 0 8px 0;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.topbar p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.site-bar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.site-bar input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--input-border);
+  background: var(--input);
+  color: white;
+  outline: none;
+  font-size: 14px;
+}
+
+.site-bar input:focus {
+  border-color: #4f78ff;
+  box-shadow: 0 0 0 3px rgba(79, 120, 255, 0.18);
+}
+
+.site-bar button {
+  padding: 0 16px;
+  height: 42px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #2f6df6 0%, #2563eb 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.site-status {
+  color: var(--muted);
+  font-size: 13px;
+  min-width: 160px;
+}
+
+.chat {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 2px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.chat::-webkit-scrollbar {
+  width: 10px;
+}
+
+.chat::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 999px;
+}
+
+.message {
+  max-width: 78%;
+  padding: 16px 18px;
+  border-radius: 22px;
+  line-height: 1.6;
+  white-space: normal;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  animation: fadeUp 0.18s ease-out;
+}
+
+.message-body {
+  white-space: pre-wrap;
+  color: inherit;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.user {
+  align-self: flex-end;
+  background: linear-gradient(180deg, #2f6df6 0%, #2563eb 100%);
+  color: white;
+  border-bottom-right-radius: 8px;
+}
+
+.assistant {
+  align-self: flex-start;
+  background: rgba(24, 34, 52, 0.95);
+  border: 1px solid var(--assistant-border);
+  color: var(--text);
+  border-bottom-left-radius: 8px;
+}
+
+.citations {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.citations-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.citations a {
+  display: block;
+  color: var(--link);
+  text-decoration: none;
+  margin-bottom: 6px;
+  word-break: break-all;
+  font-size: 14px;
+}
+
+.citations a:hover {
+  text-decoration: underline;
+}
+
+.input-bar {
+  display: flex;
+  gap: 12px;
+  padding: 14px;
+  margin-top: 8px;
+  border: 1px solid var(--panel-border);
+  border-radius: 22px;
+  background: var(--panel);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+}
+
+.input-bar input {
+  flex: 1;
+  padding: 16px 18px;
+  border-radius: 16px;
+  border: 1px solid var(--input-border);
+  background: var(--input);
+  color: white;
+  outline: none;
+  font-size: 15px;
+}
+
+.input-bar input::placeholder {
+  color: #7f8da3;
+}
+
+.input-bar input:focus {
+  border-color: #4f78ff;
+  box-shadow: 0 0 0 3px rgba(79, 120, 255, 0.18);
+}
+
+.input-bar button {
+  padding: 0 22px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #2f6df6 0%, #2563eb 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.12s ease, opacity 0.12s ease;
+}
+
+.input-bar button:hover {
+  transform: translateY(-1px);
+}
+
+.input-bar button:active {
+  transform: translateY(0);
+  opacity: 0.9;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

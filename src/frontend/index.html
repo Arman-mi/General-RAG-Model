@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TwoDots Chat</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <h1>TwoDots Site Chat</h1>
+      <p>Enter a website, index it, then chat with it (answers cite sources).</p>
+
+      <form id="site-form" class="site-bar" autocomplete="off">
+        <input
+          id="site-input"
+          type="url"
+          placeholder="Website URL (e.g. https://example.com)"
+          required
+        />
+        <button id="site-button" type="submit">Index</button>
+        <span id="site-status" class="site-status"></span>
+      </form>
+    </header>
+
+    <main id="chat" class="chat"></main>
+
+    <form id="chat-form" class="input-bar">
+      <input
+        id="message-input"
+        type="text"
+        placeholder="Ask a question about the indexed site..."
+        autocomplete="off"
+        required
+      />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

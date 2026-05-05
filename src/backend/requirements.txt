@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+pydantic
+python-dotenv
+chromadb
+openai
+tiktoken
+requests
+beautifulsoup4
+lxml
+trafilatura
+tqdm
