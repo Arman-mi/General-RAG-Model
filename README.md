@@ -1,4 +1,4 @@
-# General RAG Model (Website → Chat)
+# General RAG Model (Website → Query)
 
 Live demo: https://general-rag-model.onrender.com/
 
@@ -17,7 +17,7 @@ The app replaces the index each time you index a new site (so storage does not g
 - The backend crawls a small number of same-site HTML pages, extracts main text, splits it into chunks, embeds the chunks, and stores them in a fresh Chroma collection for that run.
 - The frontend polls `GET /api/site/{site_id}` until the status is `done`.
 
-**Chat (RAG)**
+**Query (RAG)**
 - The frontend calls `POST /api/chat` with `{ message, site_id }`.
 - The backend retrieves relevant chunks from Chroma, then asks the LLM to answer using only those excerpts.
 - The response includes `citations` (URLs used).
