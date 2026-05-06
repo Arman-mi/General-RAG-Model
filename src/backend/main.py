@@ -21,6 +21,7 @@ origins = [
     "https://twodots-rag-model.onrender.com",
     "http://localhost:3000",   
     "http://127.0.0.1:3000",
+    "https://general-rag-model.onrender.com",
 ]
 
 if frontend_origin != "*" and frontend_origin not in origins:

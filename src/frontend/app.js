@@ -1,4 +1,7 @@
-const API_BASE = "https://twodots-rag.onrender.com";
+const API_BASE = "https://general-rag-model-backend.onrender.com";
+
+// the front end URL : https://general-rag-model.onrender.com
+
 
 const siteForm = document.getElementById("site-form");
 const siteInput = document.getElementById("site-input");
