@@ -3,39 +3,118 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TwoDots Chat</title>
+  <title>RAG Site Chat</title>
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <div class="app">
-    <header class="topbar">
-      <h1>TwoDots Site Chat</h1>
-      <p>Enter a website, index it, then chat with it (answers cite sources).</p>
+    <!-- Index screen -->
+    <section id="index-screen" class="screen screen-active">
+      <header class="hero">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true"></div>
+          <div>
+            <h1>RAG Site Chat</h1>
+            <p>Index a website and ask questions grounded only in its pages.</p>
+          </div>
+        </div>
+      </header>
 
-      <form id="site-form" class="site-bar" autocomplete="off">
+      <div class="card index-card">
+        <h2>Start with a website</h2>
+        <p class="subtle">We’ll crawl a small subset of pages, build embeddings, then you can chat with citations.</p>
+
+        <form id="site-form" class="site-form" autocomplete="off">
+          <label class="field">
+            <span class="label">Website URL</span>
+            <input
+              id="site-input"
+              type="url"
+              placeholder="https://example.com"
+              required
+            />
+          </label>
+          <div class="site-actions">
+            <button id="site-button" type="submit">Index website</button>
+            <span id="site-status" class="site-status" aria-live="polite"></span>
+          </div>
+        </form>
+
+        <div class="tips">
+          <div class="tip-title">Tips</div>
+          <ul>
+            <li>Use smaller sites for the fastest demo.</li>
+            <li>Answers include source links you can open.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chat screen -->
+    <section id="chat-screen" class="screen">
+      <header class="topbar">
+        <div class="topbar-left">
+          <div class="brand-inline">
+            <div class="brand-mark small" aria-hidden="true"></div>
+            <div class="topbar-title">
+              <div class="title">RAG Site Chat</div>
+              <div class="subtitle">Grounded answers with citations</div>
+            </div>
+          </div>
+
+          <div class="site-pill" title="Indexed site">
+            <span class="dot"></span>
+            <span id="site-pill-text">No site indexed</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <button id="reindex-open" class="ghost-btn" type="button">Index new site</button>
+        </div>
+      </header>
+
+      <main id="chat" class="chat"></main>
+
+      <form id="chat-form" class="input-bar">
         <input
-          id="site-input"
-          type="url"
-          placeholder="Website URL (e.g. https://example.com)"
+          id="message-input"
+          type="text"
+          placeholder="Ask about the indexed site…"
+          autocomplete="off"
           required
         />
-        <button id="site-button" type="submit">Index</button>
-        <span id="site-status" class="site-status"></span>
+        <button type="submit">Ask</button>
       </form>
-    </header>
 
-    <main id="chat" class="chat"></main>
+      <div id="reindex-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="reindex-title">
+        <div class="modal-backdrop" data-close="true"></div>
+        <div class="modal-panel">
+          <div class="modal-header">
+            <div>
+              <div id="reindex-title" class="modal-title">Index a new website</div>
+              <div class="modal-subtitle">This replaces the current index for the demo.</div>
+            </div>
+            <button id="reindex-close" class="icon-btn" type="button" aria-label="Close">×</button>
+          </div>
 
-    <form id="chat-form" class="input-bar">
-      <input
-        id="message-input"
-        type="text"
-        placeholder="Ask a question about the indexed site..."
-        autocomplete="off"
-        required
-      />
-      <button type="submit">Send</button>
-    </form>
+          <form id="reindex-form" class="site-form" autocomplete="off">
+            <label class="field">
+              <span class="label">Website URL</span>
+              <input
+                id="reindex-input"
+                type="url"
+                placeholder="https://example.com"
+                required
+              />
+            </label>
+            <div class="site-actions">
+              <button id="reindex-button" type="submit">Index website</button>
+              <span id="reindex-status" class="site-status" aria-live="polite"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
   </div>
 
   <script src="./app.js"></script>
